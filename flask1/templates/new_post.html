@@ -1,0 +1,18 @@
+<form action="/posts/new" method="post">
+  <label>Name</label>
+  <input name="name"/>
+  </br>
+  <label>Author</label>
+  <input name="author"/>
+  </br>
+  <label>Content</label>
+  <input name="content"/>
+  </br>
+  <label>Category</label>
+  <select name="category">
+    {% for category in categories %}
+    <option value="{{ category.id }}">{{category.name}}</option>
+    {% endfor %}
+  </select>
+  <button type="submit">Submit</button>
+</form>

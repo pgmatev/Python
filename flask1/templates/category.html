@@ -1,0 +1,16 @@
+<title>Category</title>
+
+<h1>{{ category.name }}</h1>
+
+<hr>
+<form action="/categories/{{ category.id }}/delete" method="post">
+  <button type="submit">Delete category</button>
+</form>
+
+<div id="posts" style="border: 1px solid black">
+{% for post in category.posts() %}
+    {{ post.name }} | Author: {{ post.author }}
+  <br/>
+  <br/>
+{% endfor %}
+</div>
