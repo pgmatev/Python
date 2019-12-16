@@ -1,0 +1,69 @@
+keys = ['A1', 'A2', 'A3', 'B1', 'B2', 'B3','C1', 'C2', 'C3']
+class TicTacToeBoard(dict):
+	def __init__(self):
+		self.__dict__ = dict.fromkeys(keys, " ") 
+
+	def __setitem__(self, key, value):
+		self.__dict__[key] = value
+
+	def __getitem__(self, key):
+		print(self.__dict__[key])
+
+	def __str__(self):
+		a = []
+		for i in self.__dict__.values():
+			a.append(i)
+		
+		return (" -------------\n3| "+str(a[2])+" | "+str(a[5])+" | "+str(a[8])+\
+				" | \n -------------\n2| "+str(a[1])+" | "+str(a[4])+" | "+str(a[7])+\
+				" | \n -------------\n1| "+str(a[0])+" | "+str(a[3])+" | "+str(a[6])+\
+				" | \n -------------\n"+\
+				"   A   B   C")
+
+	def game_status(self):
+		if(self.__dict__["A1"] == 'X' and self.__dict__["A2"] == 'X' and self.__dict__["A3"] == 'X' or\
+		   self.__dict__["B1"] == 'X' and self.__dict__["B2"] == 'X' and self.__dict__["B3"] == 'X' or\
+		   self.__dict__["C1"] == 'X' and self.__dict__["C2"] == 'X' and self.__dict__["C3"] == 'X' or\
+		   self.__dict__["A1"] == 'X' and self.__dict__["B1"] == 'X' and self.__dict__["C1"] == 'X' or\
+		   self.__dict__["A2"] == 'X' and self.__dict__["B2"] == 'X' and self.__dict__["C2"] == 'X' or\
+		   self.__dict__["A3"] == 'X' and self.__dict__["B3"] == 'X' and self.__dict__["C3"] == 'X' or\
+		   self.__dict__["A1"] == 'X' and self.__dict__["B2"] == 'X' and self.__dict__["C3"] == 'X' or\
+		   self.__dict__["A3"] == 'X' and self.__dict__["B2"] == 'X' and self.__dict__["C1"] == 'X'):
+			print('X wins!')
+			return
+		if(self.__dict__["A1"] == 'O' and self.__dict__["A2"] == 'O' and self.__dict__["A3"] == 'O' or\
+		   self.__dict__["B1"] == 'O' and self.__dict__["B2"] == 'O' and self.__dict__["B3"] == 'O' or\
+		   self.__dict__["C1"] == 'O' and self.__dict__["C2"] == 'O' and self.__dict__["C3"] == 'O' or\
+		   self.__dict__["A1"] == 'O' and self.__dict__["B1"] == 'O' and self.__dict__["C1"] == 'O' or\
+		   self.__dict__["A2"] == 'O' and self.__dict__["B2"] == 'O' and self.__dict__["C2"] == 'O' or\
+		   self.__dict__["A3"] == 'O' and self.__dict__["B3"] == 'O' and self.__dict__["C3"] == 'O' or\
+		   self.__dict__["A1"] == 'O' and self.__dict__["B2"] == 'O' and self.__dict__["C3"] == 'O' or\
+		   self.__dict__["A3"] == 'O' and self.__dict__["B2"] == 'O' and self.__dict__["C1"] == 'O'):
+			print('O wins!')
+			return
+		elif(self.__dict__["A1"] != " " and self.__dict__["A2"] != " " and self.__dict__["A3"] != " " and\
+		   self.__dict__["B1"] != " " and self.__dict__["B2"] != " " and self.__dict__["B3"] != " " and\
+		   self.__dict__["C1"] != " " and self.__dict__["C2"] != " " and self.__dict__["C3"] != " "):
+		   print("Draw!")
+		else:
+			print("Game in progress...")
+
+
+game = TicTacToeBoard()
+game["A1"] = 'X'
+game["A2"] = 'X'
+game["A3"] = 'O'
+game["B2"] = 'O'
+game['C1'] = 'X'
+game['C2'] = 'O'
+game['C3'] = 'O'
+
+game['B3']= 'X'
+game['B1']= 'O'
+
+
+
+print(game)
+game.game_status()
+
+
