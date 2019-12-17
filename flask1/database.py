@@ -27,6 +27,15 @@ CREATE TABLE IF NOT EXISTS comments
 
 conn.cursor().execute('CREATE TABLE IF NOT EXISTS categories(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)')
 
+conn.cursor().execute('''
+CREATE TABLE IF NOT EXISTS users
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
+)
+ ''')
+
 conn.commit()
 
 class DB:
