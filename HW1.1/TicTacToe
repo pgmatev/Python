@@ -48,22 +48,14 @@ class TicTacToeBoard(dict):
 		else:
 			print("Game in progress...")
 
+	def clear_board(self):
+		for i in self.__dict__.values():
+			i = ' '
+		print("Game reset!")
 
 game = TicTacToeBoard()
-game["A1"] = 'X'
-game["A2"] = 'X'
-game["A3"] = 'O'
-game["B2"] = 'O'
-game['C1'] = 'X'
-game['C2'] = 'O'
-game['C3'] = 'O'
-
-game['B3']= 'X'
-game['B1']= 'O'
-
-
 
 print(game)
 game.game_status()
 
-
+#game.clear_board()
