@@ -1,9 +1,31 @@
 keys = ['A1', 'A2', 'A3', 'B1', 'B2', 'B3','C1', 'C2', 'C3']
+class Error(Exception):
+	pass
+
+class InvalidValue(Error):
+	def __init__(self, value):
+		self.value = value
+
+class InvalidMove(Error):
+	def __init__(self, move):
+		self.move = move
+
+class InvalidKey(Error):
+	def __init__(self, key):
+		self.key = key
+
 class TicTacToeBoard(dict):
+	turn = True
 	def __init__(self):
 		self.__dict__ = dict.fromkeys(keys, " ") 
 
 	def __setitem__(self, key, value):
+		if(not key in keys):
+			raise InvalidKey(key)
+		if(value != "X" and value != "O"):
+			raise InvalidValue(value)
+		if(self.__dict__[key]!= " "):
+			raise InvalidMove(key)
 		self.__dict__[key] = value
 
 	def __getitem__(self, key):
@@ -54,8 +76,14 @@ class TicTacToeBoard(dict):
 		print("Game reset!")
 
 game = TicTacToeBoard()
+try:
+	game.clear_board
+except InvalidValue as error:
+	print("It's Tic-Tac-Toe not an Essay, You can't use '"+error.value+"'\n")
+except InvalidMove as error:
+	print("Make sure you don't intrude other's property!1! You trespassed "+error.move+"\n")
+except InvalidKey as error:
+	print("Oh, your calculations are wrong and you placed your symbol at '"+error.key+"' which is outside the board :( \n")
 
 print(game)
 game.game_status()
-
-#game.clear_board()
